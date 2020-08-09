@@ -23,4 +23,4 @@ outputs:
     description: 'The registry to log in to'
 runs:
   using: 'docker'
-  image: 'docker://lgohr/ecr-login-action:latest'
+  image: 'docker://taopaic/ecr-login-action:latest'
