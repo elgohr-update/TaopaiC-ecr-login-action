@@ -9,7 +9,7 @@ authTokenOutput=$(aws ecr get-authorization-token)
 authString=$(echo "$authTokenOutput" | jq -r '.authorizationData[].authorizationToken' | base64 -d)
 USERNAME=$(echo "$authString" | cut -d: -f1)
 PASSWORD=$(echo "$authString" | cut -d: -f2)
-REGISTRY=$(echo "$authTokenOutput" | jq -r '.authorizationData[].proxyEndpoint')
+REGISTRY=$(echo "$authTokenOutput" | jq -r '.authorizationData[].proxyEndpoint | sub("https://";"")')
 
 if [ -z "$USERNAME" ]; then
   USERNAME="AWS"
